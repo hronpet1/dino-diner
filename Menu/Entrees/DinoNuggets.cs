@@ -27,6 +27,7 @@ namespace DinoDiner.Menu.Entrees
         {
             nuggets++;
             this.Price += 0.25;
+            this.Calories += 59;
         }
 	}
 }

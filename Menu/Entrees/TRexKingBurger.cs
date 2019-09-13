@@ -35,8 +35,8 @@ namespace DinoDiner.Menu.Entrees
 
         public TRexKingBurger()
         {
-            this.Price = 5.36;
-            this.Calories = 498;
+            this.Price = 8.45;
+            this.Calories = 728;
         }
 
         public void HoldBun()

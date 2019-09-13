@@ -18,7 +18,7 @@ namespace DinoDiner.Menu.Entrees
                 if (tortilla) ingredients.Add("Flour Tortilla");
                 if (chickenBreast) ingredients.Add("Chicken Breast");
                 if (romaineLettuce) ingredients.Add("Romaine Lettuce");
-                if (caesarDressing) ingredients.Add("Caesar Dressing");
+                if (caesarDressing) ingredients.Add("Ceasar Dressing");
                 if (parmesanCheese) ingredients.Add("Parmesan Cheese");
                 return ingredients;
             }
