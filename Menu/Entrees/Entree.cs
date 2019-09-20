@@ -6,6 +6,5 @@ namespace DinoDiner.Menu.Entrees
     {
         public double Price { get; set; }
         public uint Calories { get; set; }
-
     }
 }
