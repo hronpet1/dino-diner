@@ -4,13 +4,22 @@ using System.Text;
 
 namespace DinoDiner.Menu.Sides
 {
+    /// <summary>
+    /// Class for Fryceritops - inherits from Side
+    /// </summary>
     public class Fryceritops : Side
     {
+        /// <summary>
+        /// Constructor - sets default size as Small
+        /// </summary>
         public Fryceritops()
         {
             this.Size = Size.Small;
         }
 
+        /// <summary>
+        /// Get function that returns ingredients of side
+        /// </summary>
         public override List<string> Ingredients
         {
             get
@@ -18,15 +27,18 @@ namespace DinoDiner.Menu.Sides
                 List<string> ingredients = new List<string>() { };
                 ingredients.Add("Potato");
                 ingredients.Add("Salt");
-                ingredients.Add("Vegtable Oil");
+                ingredients.Add("Vegetable Oil");
                 return ingredients;
             }
         }
 
         private Size size;
+        /// <summary>
+        /// Get and set for size of Side, sets Price and Calories accordingly
+        /// </summary>
         public override Size Size
         {
-
+            get { return size; }
             set
             {
                 size = value;

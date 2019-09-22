@@ -2,6 +2,9 @@ using System.Collections.Generic;
 
 namespace DinoDiner.Menu.Entrees
 {
+    /// <summary>
+    /// Class for VelociWrap - inherits from Entree
+    /// </summary>
     public class VelociWrap : Entree
     {
         private bool tortilla = true;
@@ -9,8 +12,10 @@ namespace DinoDiner.Menu.Entrees
         private bool romaineLettuce = true;
         private bool caesarDressing = true;
         private bool parmesanCheese = true;
-
-        public List<string> Ingredients
+        /// <summary>
+        /// Get function that returns ingredients of entree based on state of object
+        /// </summary>
+        public override List<string> Ingredients
         {
             get
             {
@@ -23,7 +28,9 @@ namespace DinoDiner.Menu.Entrees
                 return ingredients;
             }
         }
-
+        /// <summary>
+        /// Constructor, sets base Price and Calories values
+        /// </summary>
         public VelociWrap()
         {
             this.Price = 6.86;

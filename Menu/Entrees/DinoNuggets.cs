@@ -2,11 +2,16 @@ using System.Collections.Generic;
 
 namespace DinoDiner.Menu.Entrees
 {
+    /// <summary>
+    /// Class for DinoNuggets - inherits from Entree
+    /// </summary>
     public class DinoNuggets : Entree
     {
         private uint nuggets = 6;
-
-        public List<string> Ingredients
+        /// <summary>
+        /// Get function that returns ingredients of entree based on state of object
+        /// </summary>
+        public override List<string> Ingredients
         {
             get
             {
@@ -16,13 +21,18 @@ namespace DinoDiner.Menu.Entrees
                 return ingredients;
             }
         }
-
+        /// <summary>
+        /// Constructor, sets base Price and Calories values
+        /// </summary>
         public DinoNuggets()
         {
             this.Price = 4.25;
             this.Calories = 59*nuggets;
         }
 
+        /// <summary>
+        /// Adds one nugget and changes Price and Calories accordingly
+        /// </summary>
         public void AddNugget()
         {
             nuggets++;

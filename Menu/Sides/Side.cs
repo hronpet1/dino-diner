@@ -4,14 +4,18 @@ using System.Text;
 
 namespace DinoDiner.Menu.Sides
 {
-
+    /// <summary>
+    /// Enumerator defining types of Sizes
+    /// </summary>
     public enum Size
     {
         Small,
         Medium, 
         Large
     }
-
+    /// <summary>
+    /// Base class for all Sides
+    /// </summary>
     public abstract class Side
     {
         /// <summary>
@@ -32,7 +36,7 @@ namespace DinoDiner.Menu.Sides
         /// <summary>
         /// Gets or sets the size
         /// </summary>
-        public virtual Size Size { get; set; }
+        public abstract Size Size { get; set; }
 
     }
 }

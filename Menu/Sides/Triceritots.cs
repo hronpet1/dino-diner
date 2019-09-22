@@ -4,31 +4,43 @@ using System.Text;
 
 namespace DinoDiner.Menu.Sides
 {
+    /// <summary>
+    /// Class for Triceritots - inherits from Side
+    /// </summary>
     public class Triceritots : Side
     {
+        /// <summary>
+        /// Constructor - sets default size as Small
+        /// </summary>
         public Triceritots()
         {
             this.Size = Size.Small;
         }
+        /// <summary>
+        /// Get function that returns ingredients of side
+        /// </summary>
         public override List<string> Ingredients
         {
             get
             {
                 List<string> ingredients = new List<string>() { };
                 ingredients.Add("Potato");
-                ingredients.Add("Breading");
-                ingredients.Add("Vegtable Oil");
+                ingredients.Add("Salt");
+                ingredients.Add("Vegetable Oil");
                 return ingredients;
             }
         }
-
+        private Size size;
+        /// <summary>
+        /// Get and set for size of Side, sets Price and Calories accordingly
+        /// </summary>
         public override Size Size
         {
-            get { return Size; }
+            get { return size; }
             set
             {
-                Size = value;
-                switch (Size)
+                size = value;
+                switch (size)
                 {
                     case (Size.Small):
                         {

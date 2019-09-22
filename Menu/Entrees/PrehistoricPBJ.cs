@@ -2,12 +2,17 @@
 
 namespace DinoDiner.Menu.Entrees
 {
+    /// <summary>
+    /// Class for PrehistoricPBJ - inherits from Entree
+    /// </summary>
     public class PrehistoricPBJ : Entree
     {
         private bool peanutButter = true;
         private bool jelly = true;
-
-        public List<string> Ingredients
+        /// <summary>
+        /// Get function that returns ingredients of entree based on state of object
+        /// </summary>
+        public override List<string> Ingredients
         {
             get
             {
@@ -17,7 +22,9 @@ namespace DinoDiner.Menu.Entrees
                 return ingredients;
             }
         }
-
+        /// <summary>
+        /// Constructor, sets base Price and Calories values
+        /// </summary>
         public PrehistoricPBJ()
         {
             this.Price = 6.52;
