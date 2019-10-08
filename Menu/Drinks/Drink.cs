@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Base class for all Drinks
     /// </summary>
-    public abstract class Drink
+    public abstract class Drink : IMenuItem
     {
         /// <summary>
         /// Gets and sets the price
@@ -32,5 +32,24 @@ namespace DinoDiner.Menu.Drinks
             Ice = false;
         }
 
+        public string GetSizeString()
+        {
+            switch (Size)
+            {
+                case (Size.Small):
+                    {
+                        return "Small ";
+                    }
+                case (Size.Medium):
+                    {
+                        return "Medium ";
+                    }
+                case (Size.Large):
+                    {
+                        return "Large ";
+                    }
+            }
+            return "";
+        }
     }
 }

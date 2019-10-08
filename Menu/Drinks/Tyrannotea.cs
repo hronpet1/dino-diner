@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Class for Tyrannotea - inherits from Drink
@@ -21,6 +21,7 @@ namespace DinoDiner.Menu.Drinks
             }
             set
             {
+                sweet = value;
                 if (value)
                     switch (size)
                     {
@@ -131,6 +132,17 @@ namespace DinoDiner.Menu.Drinks
         public void AddLemon()
         {
             Lemon = true;
+        }
+        /// <summary>
+        /// ToString override
+        /// </summary>
+        /// <returns>Name of the item</returns>
+        public override string ToString()
+        {
+            string name = "";
+            name += GetSizeString();
+            if(sweet) name += "Sweet ";
+            return name + "Tyrannotea";
         }
     }
 }

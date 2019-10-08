@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Class for Sodasaurus - inherits from Drink
@@ -68,6 +68,17 @@ namespace DinoDiner.Menu.Drinks
                         }
                 }
             }
+        }
+        /// <summary>
+        /// ToString override
+        /// </summary>
+        /// <returns>Name of the item</returns>
+        public override string ToString()
+        {
+            string name = "";
+            name += GetSizeString();
+            name += Flavor + " ";
+            return name + "Sodasaurus";
         }
     }
 }

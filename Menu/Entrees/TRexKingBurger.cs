@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Class for TRexKingBurger - inherits from Entree
@@ -84,6 +84,15 @@ namespace DinoDiner.Menu.Entrees
         public void HoldOnion()
         {
             this.onion = false;
+        }
+
+        /// <summary>
+        /// ToString override
+        /// </summary>
+        /// <returns>Name of the item</returns>
+        public override string ToString()
+        {
+            return "T-Rex King Burger";
         }
 
     }

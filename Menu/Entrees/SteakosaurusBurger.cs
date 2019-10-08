@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Entrees
-{
+namespace DinoDiner.Menu
+{ 
     /// <summary>
     /// Class for Steakosaurus Burger - inherits from Entree
     /// </summary>
@@ -54,6 +54,14 @@ namespace DinoDiner.Menu.Entrees
         public void HoldMustard()
         {
             this.mustard = false;
+        }
+        /// <summary>
+        /// ToString override
+        /// </summary>
+        /// <returns>Name of the item</returns>
+        public override string ToString()
+        {
+            return "Steakosaurus Burger";
         }
     }
 }

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu 
 {
     /// <summary>
     /// Base class for all Sides
     /// </summary>
-    public abstract class Side
+    public abstract class Side : IMenuItem
     {
         /// <summary>
         /// Gets and sets the price
@@ -28,6 +28,24 @@ namespace DinoDiner.Menu.Sides
         /// Gets or sets the size
         /// </summary>
         public abstract Size Size { get; set; }
-
+        public string GetSizeString()
+        {
+            switch (Size)
+            {
+                case (Size.Small):
+                    {
+                        return "Small ";
+                    }
+                case (Size.Medium):
+                    {
+                        return "Medium ";
+                    }
+                case (Size.Large):
+                    {
+                        return "Large ";
+                    }
+            }
+            return "";
+        }
     }
 }

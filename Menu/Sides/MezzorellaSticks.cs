@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace DinoDiner.Menu.Sides 
+namespace DinoDiner.Menu 
 {
     /// <summary>
     /// Class for MezzorellaSticks - inherits from Side
@@ -65,5 +65,16 @@ namespace DinoDiner.Menu.Sides
                 }
             }
         }
+        /// <summary>
+        /// ToString override
+        /// </summary>
+        /// <returns>Name of the item</returns>
+        public override string ToString()
+        {
+            string name = "";
+            name += GetSizeString();
+            return name + "Mezzorella Sticks";
+        }
+
     }
 }
