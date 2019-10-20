@@ -64,16 +64,22 @@ namespace DinoDiner.Menu
                             break;
                         }
                 }
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
             }
         }
 
         public void LeaveRoomForCream()
         {
             RoomForCream = true;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
         public void AddIce()
         {
             Ice = true;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -86,6 +92,20 @@ namespace DinoDiner.Menu
             name += GetSizeString();
             if (Decaf) name += "Decaf ";
             return name + "Jurassic Java";
+        }
+
+        /// <summary>
+        /// Gets any special instructions for this order item
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (Ice) special.Add("Add Ice");
+                if (RoomForCream) special.Add("Leave Room For Cream");
+                return special.ToArray();
+            }
         }
     }
 }

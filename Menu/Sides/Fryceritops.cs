@@ -41,6 +41,9 @@ namespace DinoDiner.Menu
             get { return size; }
             set
             {
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
+                
                 size = value;
                 switch (size)
                 {
@@ -73,7 +76,7 @@ namespace DinoDiner.Menu
         {
             string name = "";
             name += GetSizeString();
-            return name + "Friceritops";
+            return name + "Fryceritops";
         }
     }
 }

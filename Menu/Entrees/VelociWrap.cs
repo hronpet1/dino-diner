@@ -40,16 +40,22 @@ namespace DinoDiner.Menu
         public void HoldDressing()
         {
             this.caesarDressing = false;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         public void HoldLettuce()
         {
             this.romaineLettuce = false;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         public void HoldCheese()
         {
             this.parmesanCheese = false;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
         /// <summary>
         /// ToString override
@@ -58,6 +64,21 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return "Veloci-Wrap";
+        }
+
+        /// <summary>
+        /// Gets any special instructions for this order item
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!parmesanCheese) special.Add("Hold Cheese");
+                if (!caesarDressing) special.Add("Hold Dressing");
+                if (!romaineLettuce) special.Add("Hold Lettuce");
+                return special.ToArray();
+            }
         }
     }
 }

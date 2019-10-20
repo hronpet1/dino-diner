@@ -95,6 +95,9 @@ namespace DinoDiner.Menu
             get { return size; }
             set
             {
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
+                
                 size = value;
                 switch (size)
                 {
@@ -132,6 +135,8 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             Lemon = true;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
         /// <summary>
         /// ToString override
@@ -143,6 +148,20 @@ namespace DinoDiner.Menu
             name += GetSizeString();
             if(sweet) name += "Sweet ";
             return name + "Tyrannotea";
+        }
+
+        /// <summary>
+        /// Gets any special instructions for this order item
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!Ice) special.Add("Hold Ice");
+                if (Lemon) special.Add("Add Lemon");
+                return special.ToArray();
+            }
         }
     }
 }

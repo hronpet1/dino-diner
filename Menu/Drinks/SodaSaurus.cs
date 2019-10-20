@@ -27,6 +27,19 @@ namespace DinoDiner.Menu
                 return ingredients;
             }
         }
+        
+        /// <summary>
+        /// Gets any special instructions for this order item
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!Ice) special.Add("Hold Ice");
+                return special.ToArray();
+            }
+        }
         /// <summary>
         /// Constructor - sets default size as Small
         /// </summary>
@@ -45,6 +58,10 @@ namespace DinoDiner.Menu
             get { return size; }
             set
             {
+
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
+                
                 size = value;
                 switch (size)
                 {

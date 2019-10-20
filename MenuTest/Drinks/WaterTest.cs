@@ -135,7 +135,68 @@ namespace MenuTest.Drinks
         {
             Water water = new Water();
             Assert.Contains<string>("Water", water.Ingredients);
-            Assert.Equal<int>(1, water.Ingredients.Count);
+            Assert.Single(water.Ingredients);
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void WaterDescriptionShouldGiveNameForSize(Size size)
+        {
+            Water water = new Water();
+            water.Size = size;
+            Assert.Equal($"{size} Water", water.Description);
+        }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void SizeChangeShouldNotifyOfDescription(Size s)
+        {
+            Water water = new Water();
+            Assert.PropertyChanged(water, "Description", () => water.Size = s);
+        }
+
+        [Fact]
+        public void HoldIceShouldNotifyOfSpecialPropertyChange()
+        {
+            Water water = new Water();
+            Assert.PropertyChanged(water, "Special", () => water.HoldIce());
+        }
+
+        [Fact]
+        public void SpecialShouldHoldIce()
+        {
+            Water water = new Water();
+            water.HoldIce();
+            Assert.Collection<string>(water.Special, item => { Assert.Equal("Hold Ice", item); });
+        }
+
+        [Fact]
+        public void AddLemonShouldNotifyOfSpecialPropertyChange()
+        {
+            Water water = new Water();
+            Assert.PropertyChanged(water, "Special", () => water.AddLemon());
+        }
+
+        [Fact]
+        public void SpecialShouldAddLemon()
+        {
+            Water water = new Water();
+            water.AddLemon();
+            Assert.Collection<string>(water.Special, item => { Assert.Equal("Add Lemon", item); });
+        }
+
+        [Fact]
+        public void SpecialShouldAddLemonAndHoldIce()
+        {
+            Water water = new Water();
+            water.HoldIce();
+            water.AddLemon();
+            Assert.Contains<string>("Hold Ice", water.Special);
+            Assert.Contains<string>("Add Lemon", water.Special);
         }
     }
 }

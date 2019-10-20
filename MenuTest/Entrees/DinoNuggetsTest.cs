@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Xunit;
-using DinoDiner.Menu.Entrees;
+using DinoDiner.Menu;
 
 namespace MenuTest.Entrees
 {
@@ -84,6 +84,45 @@ namespace MenuTest.Entrees
             Assert.Equal<uint>(dn.Calories, 59*8);
             dn.AddNugget();
             Assert.Equal<uint>(dn.Calories, 59*9);
+        }
+
+        [Fact]
+        public void DinoNuggetsDescriptionShouldGiveName()
+        {
+            DinoNuggets dn = new DinoNuggets();
+            Assert.Equal("Dino-Nuggets", dn.Description);
+        }
+        [Fact]
+        public void AddNuggetShouldNotifyOfSpecialPropertyChange()
+        {
+            DinoNuggets dn = new DinoNuggets();
+            Assert.PropertyChanged(dn, "Special", () => dn.AddNugget());
+        }
+
+        [Fact]
+        public void AddNuggetShouldNotifyOfPricePropertyChange()
+        {
+            DinoNuggets dn = new DinoNuggets();
+            Assert.PropertyChanged(dn, "Price", () => dn.AddNugget());
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialListByDefault()
+        {
+            DinoNuggets dn = new DinoNuggets();
+            Assert.Empty(dn.Special);
+        }
+
+        [Fact]
+        public void SpecialShouldAddNuggets()
+        {
+            DinoNuggets dn = new DinoNuggets();
+            dn.AddNugget();
+            Assert.Collection<string>(dn.Special, item => { Assert.Equal("1 Extra Nuggets", item); });
+            dn.AddNugget();
+            Assert.Collection<string>(dn.Special, item => { Assert.Equal("2 Extra Nuggets", item); });
+            dn.AddNugget();
+            Assert.Collection<string>(dn.Special, item => { Assert.Equal("3 Extra Nuggets", item); });
         }
     }
 }

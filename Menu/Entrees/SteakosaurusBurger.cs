@@ -40,20 +40,28 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.wholeWheatBun = false;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         public void HoldPickle()
         {
             this.pickle = false;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         public void HoldKetchup()
         {
             this.ketchup = false;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
         public void HoldMustard()
         {
             this.mustard = false;
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
         /// <summary>
         /// ToString override
@@ -62,6 +70,21 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return "Steakosaurus Burger";
+        }
+        /// <summary>
+        /// Gets any special instructions for this order item
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!wholeWheatBun) special.Add("Hold Bun");
+                if (!pickle) special.Add("Hold Pickle");
+                if (!mustard) special.Add("Hold Mustard");
+                if (!ketchup) special.Add("Hold Ketchup");
+                return special.ToArray();
+            }
         }
     }
 }
