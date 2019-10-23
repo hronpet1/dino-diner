@@ -16,33 +16,13 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for SideSelection.xaml
+    /// Interaction logic for OrderControl.xaml
     /// </summary>
-    public partial class SideSelection : Page
+    public partial class OrderControl : UserControl
     {
-        public SideSelection()
+        public OrderControl()
         {
             InitializeComponent();
-        }
-
-        private void AddFryceritops(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddMezzorellaSticks(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddMeteorMacAndCheese(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddTriceritots(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
