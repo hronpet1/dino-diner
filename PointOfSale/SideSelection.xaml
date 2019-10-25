@@ -75,21 +75,21 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Grid.Column="0" x:Name="SmallButton" Margin="5"
+                    <RadioButton Click="SizeButton" Grid.Column="0" x:Name="SmallButton" Margin="5"
      GroupName="First Group">
                         <StackPanel>
                             <TextBlock>Small</TextBlock>
                             <Image Source="pack://application:,,,/images/small.jpg" Width="125"/>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Grid.Column="1" x:Name="MediumButton" Margin="5"
+                    <RadioButton Click="SizeButton" Grid.Column="1" x:Name="MediumButton" Margin="5"
      GroupName="First Group">
                         <StackPanel>
                             <TextBlock>Medium</TextBlock>
                             <Image Source="pack://application:,,,/images/medium.jpg" Width="150"/>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton VerticalAlignment="Center" Grid.Column="2" x:Name="LargeButton" Margin="5"
+                    <RadioButton Click="SizeButton" VerticalAlignment="Center" Grid.Column="2" x:Name="LargeButton" Margin="5"
      GroupName="First Group">
                         <StackPanel>
                             <TextBlock>Large</TextBlock>

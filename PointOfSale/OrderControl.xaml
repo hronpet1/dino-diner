@@ -10,26 +10,41 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBox Text="Order" Grid.Row="0"></TextBox>
-        <ListBox Grid.Row="1" ItemsSource="{Binding Path=Items}">
+        <ListBox Grid.Row="1" Name="OrderItems" ItemsSource="{Binding Path=Items}" IsSynchronizedWithCurrentItem="True" DataContextChanged="OnDataContextChanged" SelectionChanged="OnSelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Description}"></TextBlock>
-                    <ListBox ItemsSource="{Binding Path=Ingredients}"></ListBox>
+                    <StackPanel MinWidth="180">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="15"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                        <TextBlock Text="{Binding Path=Description}" Grid.Column="0"></TextBlock>
+                        <ListBox ItemsSource="{Binding Path=Special}" Grid.Column="1"></ListBox>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <Border Grid.Row="2">
-            <StackPanel Orientation="Horizontal">
-                <TextBox>Price:</TextBox>
-                <TextBox>$____</TextBox>
+            <StackPanel Orientation="Vertical">
+                <TextBox Text="{Binding Path=SubtotalCost, StringFormat=n2, Mode=OneWay}"></TextBox>
+                <!-- <TextBox Text="{Binding Path=SalesTaxCost}"></TextBox>
+                <TextBox Text="{Binding Path=TotalCost}"></TextBox> -->
             </StackPanel>
         </Border>
-        <TextBox Text="Buttons Go Here" Grid.Row="3"></TextBox>
+        <Grid Grid.Row="3" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Click="OnRemoveItem" Background="Red" Foreground="White" Grid.Column="0">Remove</Button>
+            <Button Background="Green" Foreground="White" Grid.Column="1"> Submit</Button>
+        </Grid>
+        
     </Grid>
 </UserControl>

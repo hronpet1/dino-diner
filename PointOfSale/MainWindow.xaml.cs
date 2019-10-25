@@ -24,26 +24,31 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
+            OrderControl.NavigationService = OrderUI.NavigationService;
             Order order = (Order)DataContext;
             order.Items.Add(new Fryceritops());
-            order.Items.Add(new Sodasaurus());
+            Sodasaurus soda = new Sodasaurus();
+            soda.HoldIce();
+            order.Items.Add(soda);
         }
 
-        public void OnLoadCompleted(object sender, NavigationEventArgs args)
+        public void OnLoadComplete(object sender, NavigationEventArgs args)
         {
-            SetFrameDataContext();
+            BindDataContextToPage();
         }
+
 
         public void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs args)
         {
-            SetFrameDataContext();
+            BindDataContextToPage();
         }
 
-        private void SetFrameDataContext()
+        private void BindDataContextToPage()
         {
-            FrameworkElement content = OrderInterface.Content as FrameworkElement;
-            if(content == null) return;
-            content.DataContext = OrderInterface.DataContext;
+            if(OrderUI.Content is FrameworkElement element)
+            {
+                element.DataContext = OrderUI.DataContext;
+            }
         }
     }
 }
