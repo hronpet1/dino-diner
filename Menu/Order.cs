@@ -15,7 +15,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// List of ordered items
         /// </summary>
-        public ObservableCollection<IOrderItem> Items { get; set; }
+        public ObservableCollection<IOrderItem> Items { get; protected set; }
 
         /// <summary>
         /// Price of all items in order without tax

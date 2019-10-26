@@ -31,11 +31,23 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Border Grid.Row="2">
-            <StackPanel Orientation="Vertical">
-                <TextBox Text="{Binding Path=SubtotalCost, StringFormat=n2, Mode=OneWay}"></TextBox>
-                <!-- <TextBox Text="{Binding Path=SalesTaxCost}"></TextBox>
-                <TextBox Text="{Binding Path=TotalCost}"></TextBox> -->
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox TextAlignment="Right" Grid.Row="0" Grid.Column="0">Subtotal $</TextBox>
+                <TextBox Text="{Binding Path=SubtotalCost, StringFormat=n2, Mode=OneWay}" Grid.Row="0" Grid.Column="1"></TextBox>
+                <TextBox TextAlignment="Right" Grid.Row="1" Grid.Column="0">Sales Tax Cost $</TextBox>
+                <TextBox Text="{Binding Path=SalesTaxCost, StringFormat=n2, Mode=OneWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+                <TextBox TextAlignment="Right" Grid.Row="2" Grid.Column="0">Total Cost $</TextBox>
+                <TextBox Text="{Binding Path=TotalCost, StringFormat=n2, Mode=OneWay}" Grid.Row="2" Grid.Column="1"></TextBox>
+            </Grid>
         </Border>
         <Grid Grid.Row="3" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
