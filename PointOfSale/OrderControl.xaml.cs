@@ -31,6 +31,11 @@ namespace PointOfSale
         {
             CollectionViewSource.GetDefaultView(OrderItems.Items).MoveCurrentToLast();
         }
+        /// <summary>
+        /// Called when new Item from the Order is selected and navigates to the correct window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
             if (OrderItems.SelectedItem is Side side)
@@ -59,7 +64,11 @@ namespace PointOfSale
                 order.Items.CollectionChanged += OnCollectionChanged;
             }
         }
-        
+        /// <summary>
+        /// Asks for confirmation from user and if confirmed, deletes all items from current Order and returns to the MenuCategorySelection window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void OnRemoveOrder(object sender, RoutedEventArgs args)
         {
             if(DataContext is Order order)
@@ -72,12 +81,21 @@ namespace PointOfSale
                 }               
             }
         }
-
+        /// <summary>
+        /// Returns user to the MenuCategorySelection window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void GoHome(object sender, RoutedEventArgs args)
         {
             NavigationService?.Navigate(new MenuCategorySelection());
         }
     
+        /// <summary>
+        /// Removes Item from Order, whose Delete button was clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void RemoveItem(object sender, RoutedEventArgs args)
         {
             Button button = sender as Button;

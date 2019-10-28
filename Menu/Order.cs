@@ -66,7 +66,11 @@ namespace DinoDiner.Menu
             Items = new ObservableCollection<IOrderItem>();
             Items.CollectionChanged += OnCollectionChanged;
         }
-
+        /// <summary>
+        /// Updates costs for each change of the Items collection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotalcost"));
