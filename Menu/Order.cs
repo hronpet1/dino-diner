@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Text;
 using DinoDiner.Menu;
@@ -15,7 +16,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// List of ordered items
         /// </summary>
-        public ObservableCollection<IOrderItem> Items { get; protected set; }
+        public ObservableCollection<IOrderItem> Items { get; protected set;}
 
         /// <summary>
         /// Price of all items in order without tax
@@ -66,8 +67,32 @@ namespace DinoDiner.Menu
             Items.CollectionChanged += OnCollectionChanged;
         }
 
-        private void OnCollectionChanged(object sender, EventArgs args)
+        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotalcost"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SalesTaxCost"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Totalcost"));
+            if (args.Action == NotifyCollectionChangedAction.Remove)
+            {
+                foreach (IOrderItem item in args.OldItems)
+                {
+                    //Removed items
+                    item.PropertyChanged -= EntityViewModelPropertyChanged;
+                }
+            }
+            else if (args.Action == NotifyCollectionChangedAction.Add)
+            {
+                foreach (IOrderItem item in args.NewItems)
+                {
+                    //Added items
+                    item.PropertyChanged += EntityViewModelPropertyChanged;
+                }
+            }
+        }
+
+        public void EntityViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotalcost"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SalesTaxCost"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Totalcost"));

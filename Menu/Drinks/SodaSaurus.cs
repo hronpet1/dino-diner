@@ -9,10 +9,23 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Sodasaurus : Drink
     {
+        private SodasaurusFlavor flavor;
         /// <summary>
         /// Get and set function for Soda flavor
         /// </summary>
-        public SodasaurusFlavor Flavor { get; set; }
+        public SodasaurusFlavor Flavor
+        {
+            get
+            {
+                return flavor;
+            }
+            set
+            {
+                flavor = value;
+                NotifyOfPropertyChange("Description");
+            }
+        }
+
         /// <summary>
         /// Get function that returns ingredients of drink
         /// </summary>
@@ -58,10 +71,6 @@ namespace DinoDiner.Menu
             get { return size; }
             set
             {
-
-                NotifyOfPropertyChange("Description");
-                NotifyOfPropertyChange("Price");
-                
                 size = value;
                 switch (size)
                 {
@@ -84,6 +93,10 @@ namespace DinoDiner.Menu
                             break;
                         }
                 }
+
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
+
             }
         }
         /// <summary>

@@ -22,7 +22,6 @@ namespace PointOfSale
     public partial class OrderControl : UserControl
     {
         public static NavigationService NavigationService { get; set; }
-
         public OrderControl()
         {
             InitializeComponent();
@@ -30,7 +29,7 @@ namespace PointOfSale
 
         public void OnCollectionChanged(object sender, EventArgs args)
         {
-            //CollectionViewSource.GetDefaultView(OrderItems.Items).MoveCurrentToLast();
+            CollectionViewSource.GetDefaultView(OrderItems.Items).MoveCurrentToLast();
         }
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
@@ -61,11 +60,31 @@ namespace PointOfSale
             }
         }
         
-        private void OnRemoveItem(object sender, RoutedEventArgs args)
+        private void OnRemoveOrder(object sender, RoutedEventArgs args)
         {
             if(DataContext is Order order)
             {
-                order.Items.Remove((IOrderItem)OrderItems.SelectedItem);
+                MessageBoxResult res = MessageBox.Show("Are you sure you want to remove current order?", "Remove order", MessageBoxButton.OKCancel);
+                if(res == MessageBoxResult.OK)
+                {
+                    order.Items.Clear();
+                    NavigationService?.Navigate(new MenuCategorySelection());
+                }               
+            }
+        }
+
+        private void GoHome(object sender, RoutedEventArgs args)
+        {
+            NavigationService?.Navigate(new MenuCategorySelection());
+        }
+    
+        private void RemoveItem(object sender, RoutedEventArgs args)
+        {
+            Button button = sender as Button;
+            if (DataContext is Order order)
+            {
+                int index = order.Items.IndexOf((IOrderItem)button.DataContext);
+                order.Items.RemoveAt(index);
             }
         }
     }

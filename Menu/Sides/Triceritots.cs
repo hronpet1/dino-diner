@@ -39,9 +39,6 @@ namespace DinoDiner.Menu
             get { return size; }
             set
             {
-                NotifyOfPropertyChange("Description");
-                NotifyOfPropertyChange("Price");
-                
                 size = value;
                 switch (size)
                 {
@@ -64,6 +61,8 @@ namespace DinoDiner.Menu
                             break;
                         }
                 }
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
             }
         }
         /// <summary>

@@ -82,6 +82,13 @@ namespace DinoDiner.Menu
             NotifyOfPropertyChange("Ingredients");
         }
 
+        public void AddDecaf()
+        {
+            Decaf = true;
+            NotifyOfPropertyChange("Description");
+            NotifyOfPropertyChange("Ingredients");
+        }
+
         /// <summary>
         /// ToString override
         /// </summary>

@@ -63,22 +63,26 @@ namespace PointOfSale
 
         }
 
-        private void SizeButton(object sender, RoutedEventArgs e)
+        private void SmallButton(object sender, RoutedEventArgs e)
         {
-            DinoDiner.Menu.Size size = DinoDiner.Menu.Size.Small;
-            OnSizeSelect(size);
+            SetSize(DinoDiner.Menu.Size.Small);
         }
-        protected void OnSizeSelect(DinoDiner.Menu.Size size)
+
+        private void MediumButton(object sender, RoutedEventArgs e)
         {
-            switch (size)
-            {
-                case (DinoDiner.Menu.Size.Small):
-                    break;
-                case (DinoDiner.Menu.Size.Medium):
-                    break;
-                case (DinoDiner.Menu.Size.Large):
-                    break;
-            }
+            SetSize(DinoDiner.Menu.Size.Medium);
+        }
+
+        private void LargeButton(object sender, RoutedEventArgs e)
+        {
+            SetSize(DinoDiner.Menu.Size.Large);
+        }
+
+        private void SetSize(DinoDiner.Menu.Size size)
+        {
+            if (Side != null)
+                Side.Size = size;
+            NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

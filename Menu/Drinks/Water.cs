@@ -40,7 +40,6 @@ namespace DinoDiner.Menu
             get { return size; }
             set
             {
-                NotifyOfPropertyChange("Description");
                 size = value;
                 switch (size)
                 {
@@ -63,6 +62,8 @@ namespace DinoDiner.Menu
                             break;
                         }
                 }
+                NotifyOfPropertyChange("Description");
+
             }
         }
         /// <summary>
@@ -77,9 +78,9 @@ namespace DinoDiner.Menu
         }
         public void AddLemon()
         {
+            Lemon = true;
             NotifyOfPropertyChange("Special");
             NotifyOfPropertyChange("Ingredients");
-            Lemon = true;
         }
 
         /// <summary>

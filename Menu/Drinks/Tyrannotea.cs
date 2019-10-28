@@ -62,6 +62,13 @@ namespace DinoDiner.Menu
                     }
             }
         }
+
+        public void AddSweet()
+        {
+            Sweet = true;
+            NotifyOfPropertyChange("Description");
+            NotifyOfPropertyChange("Ingredients");
+        }
         public bool Lemon { get; set; } = false;
         /// <summary>
         /// Get function that returns ingredients of drink
@@ -95,9 +102,6 @@ namespace DinoDiner.Menu
             get { return size; }
             set
             {
-                NotifyOfPropertyChange("Description");
-                NotifyOfPropertyChange("Price");
-                
                 size = value;
                 switch (size)
                 {
@@ -129,6 +133,8 @@ namespace DinoDiner.Menu
                             break;
                         }
                 }
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
             }
         }
 

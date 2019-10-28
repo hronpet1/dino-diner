@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DinoDiner.Menu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,48 @@ namespace PointOfSale
     /// </summary>
     public partial class FlavorSelection : Page
     {
-        public FlavorSelection()
+        Sodasaurus Soda { get; set; }
+        public FlavorSelection(Sodasaurus soda)
         {
             InitializeComponent();
+            Soda = soda;
         }
+
+        private void ColaClick(object sender, RoutedEventArgs e)
+        {
+            Soda.Flavor = SodasaurusFlavor.Cola;
+            NavigationService.Navigate(new DrinkSelection(Soda));
+        }
+        private void ChocoClick(object sender, RoutedEventArgs e)
+        {
+            Soda.Flavor = SodasaurusFlavor.Chocolate;
+            NavigationService.Navigate(new DrinkSelection(Soda));
+        }
+        private void VanillaClick(object sender, RoutedEventArgs e)
+        {
+            Soda.Flavor = SodasaurusFlavor.Vanilla;
+            NavigationService.Navigate(new DrinkSelection(Soda));
+        }
+        private void OrangeClick(object sender, RoutedEventArgs e)
+        {
+            Soda.Flavor = SodasaurusFlavor.Orange;
+            NavigationService.Navigate(new DrinkSelection(Soda));
+        }
+        private void LimeClick(object sender, RoutedEventArgs e)
+        {
+            Soda.Flavor = SodasaurusFlavor.Lime;
+            NavigationService.Navigate(new DrinkSelection(Soda));
+        }
+        private void RootBeerClick(object sender, RoutedEventArgs e)
+        {
+            Soda.Flavor = SodasaurusFlavor.RootBeer;
+            NavigationService.Navigate(new DrinkSelection(Soda));
+        }
+        private void CherryClick(object sender, RoutedEventArgs e)
+        {
+            Soda.Flavor = SodasaurusFlavor.Cherry;
+            NavigationService.Navigate(new DrinkSelection(Soda));
+        }
+
     }
 }

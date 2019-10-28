@@ -70,30 +70,36 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Grid.Row="0" Click="ChooseFlavor" x:Name="flavor" Visibility="Collapsed">
                     <StackPanel>
                         <TextBlock TextOptions.TextRenderingMode="ClearType" FontSize="40">Choose <LineBreak/> flavor</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="1" Grid.Row="0"  x:Name="sugar" Visibility="Collapsed">
+                <Button Grid.Column="1" Grid.Row="0" Click="AddSugar" x:Name="sugar" Visibility="Collapsed">
                     <StackPanel>
                         <TextBlock TextOptions.TextRenderingMode="ClearType" FontSize="40">Add <LineBreak/>sugar</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="2" Grid.Row="0"  x:Name="cream" Visibility="Collapsed">
+                <Button Grid.Column="2" Grid.Row="0" Click="LeaveRoomForCream" x:Name="cream" Visibility="Collapsed">
                     <StackPanel>
                         <TextBlock TextOptions.TextRenderingMode="ClearType" FontSize="40">Add <LineBreak/>cream</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="3" Grid.Row="0"  x:Name="decaf" Visibility="Collapsed">
+                <Button Grid.Column="3" Grid.Row="0" Click="Decaf"  x:Name="decaf" Visibility="Collapsed">
                     <StackPanel>
                         <TextBlock TextOptions.TextRenderingMode="ClearType" FontSize="40">Decaf</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="4" Grid.Row="0"  x:Name="lemon" Visibility="Collapsed">
+                <Button Grid.Column="4" Grid.Row="0" Click="AddLemon"  x:Name="lemon" Visibility="Collapsed">
                     <StackPanel>
                         <TextBlock TextOptions.TextRenderingMode="ClearType" FontSize="40">Add <LineBreak/>lemon</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="5" Grid.Row="0" Click="HoldIce"  x:Name="holdice" Visibility="Visible">
+                    <StackPanel>
+                        <TextBlock TextOptions.TextRenderingMode="ClearType" FontSize="40">Hold Ice</TextBlock>
                     </StackPanel>
                 </Button>
             </Grid>
@@ -103,32 +109,32 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Height="Auto" Grid.Row="1" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Grid.Column="0" x:Name="SmallButton" Margin="5"
-     GroupName="First Group">
+                    <Button Click="SmallButton" Grid.Column="0" Margin="5">
                         <StackPanel>
-                            <TextBlock>Small</TextBlock>
+                            <TextBlock HorizontalAlignment="Center">Small</TextBlock>
                             <Image Source="pack://application:,,,/images/small.jpg" Width="125"/>
                         </StackPanel>
-                    </RadioButton>
-                    <RadioButton Grid.Column="1" x:Name="MediumButton" Margin="5"
-     GroupName="First Group">
+                    </Button>
+                    <Button Click="MediumButton" Grid.Column="1" Margin="5">
                         <StackPanel>
-                            <TextBlock>Medium</TextBlock>
+                            <TextBlock HorizontalAlignment="Center">Medium</TextBlock>
                             <Image Source="pack://application:,,,/images/medium.jpg" Width="150"/>
                         </StackPanel>
-                    </RadioButton>
-                    <RadioButton VerticalAlignment="Center" Grid.Column="2" x:Name="LargeButton" Margin="5"
-     GroupName="First Group">
+                    </Button>
+                    <Button Click="LargeButton" VerticalAlignment="Center" Grid.Column="2" Margin="5,5,5,5" Height="170">
                         <StackPanel>
-                            <TextBlock>Large</TextBlock>
+                            <TextBlock HorizontalAlignment="Center">Large</TextBlock>
                             <Image Source="pack://application:,,,/images/large.jpg" Width="170"/>
                         </StackPanel>
-                    </RadioButton>
+                    </Button>
                 </Grid>
             </Grid>
         </StackPanel>

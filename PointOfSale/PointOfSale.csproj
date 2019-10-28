@@ -180,5 +180,21 @@
       <Name>Menu</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\macandcheese_menu.png" />
+    <Resource Include="images\nuggets_combo.png" />
+    <Resource Include="images\pbj_combo.png" />
+    <Resource Include="images\steakosaurus_combo.png" />
+    <Resource Include="images\trex_combo.png" />
+    <Resource Include="images\wings_combo.png" />
+    <Resource Include="images\wrap_menu.png" />
+    <Resource Include="images\wurst_combo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\home.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\delete.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,11 +25,6 @@ namespace PointOfSale
         {
             InitializeComponent();
             OrderControl.NavigationService = OrderUI.NavigationService;
-            Order order = (Order)DataContext;
-            order.Items.Add(new Fryceritops());
-            Sodasaurus soda = new Sodasaurus();
-            soda.HoldIce();
-            order.Items.Add(soda);
         }
 
         public void OnLoadComplete(object sender, NavigationEventArgs args)
