@@ -47,10 +47,9 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(entree);
+                order.Add(entree);
                 this.Entree = entree;
             }
-            NavigationService.Navigate(new MenuCategorySelection());
         }
 
         /// <summary>
@@ -70,6 +69,7 @@ namespace PointOfSale
         private void AddPBJ(object sender, RoutedEventArgs e)
         {
             SelectEntree(new PrehistoricPBJ());
+            NavigationService.Navigate(new CustomizePrehistoricPBJ((PrehistoricPBJ)Entree));
         }
         /// <summary>
         /// Adds new VelociWrap to the Order

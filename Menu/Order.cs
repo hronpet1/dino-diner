@@ -13,10 +13,19 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Order : INotifyPropertyChanged
     {
+        // Backing variables
+        private double salesTaxRate = 0;
+        private List<IOrderItem> items = new List<IOrderItem>();
+
         /// <summary>
         /// List of ordered items
         /// </summary>
-        public ObservableCollection<IOrderItem> Items { get; protected set;}
+        public IOrderItem[] Items {
+            get
+            {
+                return items.ToArray();
+            }
+        }
 
         /// <summary>
         /// Price of all items in order without tax
@@ -39,7 +48,15 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Tax rate
         /// </summary>
-        public double SalesTaxRate { get; protected set; } = 0;
+        public double SalesTaxRate { get
+            {
+                return salesTaxRate;
+            }
+            protected set
+            {
+                salesTaxRate = value;
+            }
+        }
 
         /// <summary>
         /// Calculated tax cost based on SalesTaxRate and SubtotalCost
@@ -63,47 +80,51 @@ namespace DinoDiner.Menu
         }
         public Order()
         {
-            Items = new ObservableCollection<IOrderItem>();
-            Items.CollectionChanged += OnCollectionChanged;
-        }
-        /// <summary>
-        /// Updates costs for each change of the Items collection
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotalcost"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SalesTaxCost"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Totalcost"));
-            if (args.Action == NotifyCollectionChangedAction.Remove)
-            {
-                foreach (IOrderItem item in args.OldItems)
-                {
-                    //Removed items
-                    item.PropertyChanged -= EntityViewModelPropertyChanged;
-                }
-            }
-            else if (args.Action == NotifyCollectionChangedAction.Add)
-            {
-                foreach (IOrderItem item in args.NewItems)
-                {
-                    //Added items
-                    item.PropertyChanged += EntityViewModelPropertyChanged;
-                }
-            }
-        }
-
-        public void EntityViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotalcost"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SalesTaxCost"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Totalcost"));
         }
         /// <summary>
         /// An event handler for property changes
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Add a new item to our order
+        /// </summary>
+        /// <param name="item"></param>
+        public void Add(IOrderItem item)
+        {
+            items.Add(item);
+            item.PropertyChanged += OnPropertyChanged;
+            Notify();
+        }
+
+        public bool Remove(IOrderItem item)
+        {
+            bool removed = items.Remove(item);
+            if (removed) Notify();
+            return removed;
+        }
+
+        public void Clear()
+        {
+            items.Clear();
+            Notify();
+        }
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
+        {
+            Notify();
+        }
+
+        private void Notify()
+        {
+            NotifyOfPropertyChanged("Items");
+            NotifyOfPropertyChanged("Subtotalcost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("Totalcost");
+        }
+
+        private void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

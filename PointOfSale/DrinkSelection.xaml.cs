@@ -37,7 +37,12 @@ namespace PointOfSale
         {
             InitializeComponent();
             Drink = drink;
-            if (drink is Sodasaurus)
+            SetButtons();
+        }
+
+        private void SetButtons()
+        {
+            if (Drink is Sodasaurus)
             {
                 lemon.Visibility = Visibility.Collapsed;
                 sugar.Visibility = Visibility.Collapsed;
@@ -46,7 +51,7 @@ namespace PointOfSale
                 flavor.Visibility = Visibility.Visible;
                 holdIceText.Text = "Hold \nIce";
             }
-            else if (drink is Tyrannotea)
+            else if (Drink is Tyrannotea)
             {
                 lemon.Visibility = Visibility.Visible;
                 sugar.Visibility = Visibility.Visible;
@@ -55,7 +60,7 @@ namespace PointOfSale
                 flavor.Visibility = Visibility.Collapsed;
                 holdIceText.Text = "Hold \nIce";
             }
-            else if (drink is Water)
+            else if (Drink is Water)
             {
                 lemon.Visibility = Visibility.Visible;
                 sugar.Visibility = Visibility.Collapsed;
@@ -64,7 +69,7 @@ namespace PointOfSale
                 flavor.Visibility = Visibility.Collapsed;
                 holdIceText.Text = "Hold \nIce";
             }
-            else if (drink is JurassicJava)
+            else if (Drink is JurassicJava)
             {
                 lemon.Visibility = Visibility.Collapsed;
                 sugar.Visibility = Visibility.Collapsed;
@@ -82,8 +87,9 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(drink);
+                order.Add(drink);
                 this.Drink = drink;
+                SetButtons();
             }
         }
         /// <summary>

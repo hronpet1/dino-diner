@@ -61,7 +61,7 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.CollectionChanged += OnCollectionChanged;
+                //order.Items.CollectionChanged += OnCollectionChanged;
             }
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace PointOfSale
                 MessageBoxResult res = MessageBox.Show("Are you sure you want to remove current order?", "Remove order", MessageBoxButton.OKCancel);
                 if(res == MessageBoxResult.OK)
                 {
-                    order.Items.Clear();
+                    order.Clear();
                     NavigationService?.Navigate(new MenuCategorySelection());
                 }               
             }
@@ -101,8 +101,9 @@ namespace PointOfSale
             Button button = sender as Button;
             if (DataContext is Order order)
             {
-                int index = order.Items.IndexOf((IOrderItem)button.DataContext);
-                order.Items.RemoveAt(index);
+                // int index = order.Items.IndexOf((IOrderItem)button.DataContext);
+                // order.RemoveAt(index);
+                order.Remove((IOrderItem)button.DataContext);
             }
         }
     }
