@@ -63,7 +63,7 @@ namespace DinoDiner.Menu
                         }
                 }
                 NotifyOfPropertyChange("Description");
-
+                NotifyOfPropertyChange("Price");
             }
         }
         /// <summary>

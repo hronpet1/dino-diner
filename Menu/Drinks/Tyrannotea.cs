@@ -60,6 +60,7 @@ namespace DinoDiner.Menu
                                 break;
                             }
                     }
+                NotifyOfPropertyChange("Description");
             }
         }
 

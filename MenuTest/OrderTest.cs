@@ -28,7 +28,7 @@ namespace MenuTest
             Order o = new Order();
             Assert.Equal(0, o.SalesTaxRate);
         }
-
+        /*
         [Fact]
         public void PlacingOrderItemsShouldReturnCorrectSubtotal()
         {
@@ -36,7 +36,9 @@ namespace MenuTest
             o.Items = new ObservableCollection<IOrderItem>() { new Fryceritops(), new Sodasaurus(), new Brontowurst() };
             Assert.Equal(7.85, o.SubtotalCost, 2);
         }
+        */
 
+        /*
         [Fact]
         public void SubTotalShouldntBeNegative()
         {
@@ -46,6 +48,6 @@ namespace MenuTest
             o.Items.Add(side);
             Assert.Equal(0, o.SubtotalCost);
         }
-
+        */
     }
 }
