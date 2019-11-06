@@ -35,7 +35,7 @@ namespace PointOfSale
         private void ColaClick(object sender, RoutedEventArgs e)
         {
             Soda.Flavor = SodasaurusFlavor.Cola;
-            NavigationService.Navigate(new DrinkSelection(Soda));
+            NavigationService.GoBack();
         }
         /// <summary>
         /// Changes flavor of the Soda to Chocolate and navigates back to DrinkSelection window
@@ -45,7 +45,7 @@ namespace PointOfSale
         private void ChocoClick(object sender, RoutedEventArgs e)
         {
             Soda.Flavor = SodasaurusFlavor.Chocolate;
-            NavigationService.Navigate(new DrinkSelection(Soda));
+            NavigationService.GoBack();
         }
         /// <summary>
         /// Changes flavor of the Soda to Vanilla and navigates back to DrinkSelection window
@@ -55,7 +55,7 @@ namespace PointOfSale
         private void VanillaClick(object sender, RoutedEventArgs e)
         {
             Soda.Flavor = SodasaurusFlavor.Vanilla;
-            NavigationService.Navigate(new DrinkSelection(Soda));
+            NavigationService.GoBack();
         }
         /// <summary>
         /// Changes flavor of the Soda to Orange and navigates back to DrinkSelection window
@@ -65,7 +65,7 @@ namespace PointOfSale
         private void OrangeClick(object sender, RoutedEventArgs e)
         {
             Soda.Flavor = SodasaurusFlavor.Orange;
-            NavigationService.Navigate(new DrinkSelection(Soda));
+            NavigationService.GoBack();
         }
         /// <summary>
         /// Changes flavor of the Soda to Lime and navigates back to DrinkSelection window
@@ -75,7 +75,7 @@ namespace PointOfSale
         private void LimeClick(object sender, RoutedEventArgs e)
         {
             Soda.Flavor = SodasaurusFlavor.Lime;
-            NavigationService.Navigate(new DrinkSelection(Soda));
+            NavigationService.GoBack();
         }
         /// <summary>
         /// Changes flavor of the Soda to RootBeer and navigates back to DrinkSelection window
@@ -85,7 +85,7 @@ namespace PointOfSale
         private void RootBeerClick(object sender, RoutedEventArgs e)
         {
             Soda.Flavor = SodasaurusFlavor.RootBeer;
-            NavigationService.Navigate(new DrinkSelection(Soda));
+            NavigationService.GoBack();
         }
         /// <summary>
         /// Changes flavor of the Soda to Cherry and navigates back to DrinkSelection window
@@ -95,7 +95,7 @@ namespace PointOfSale
         private void CherryClick(object sender, RoutedEventArgs e)
         {
             Soda.Flavor = SodasaurusFlavor.Cherry;
-            NavigationService.Navigate(new DrinkSelection(Soda));
+            NavigationService.GoBack();
         }
 
     }

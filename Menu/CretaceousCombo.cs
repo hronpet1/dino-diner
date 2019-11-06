@@ -23,16 +23,67 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Get and set for Entree in the combo
         /// </summary>
-        public Entree Entree { get; set; }
+        private Entree entree;
+        public Entree Entree
+        {
+            get
+            {
+                return entree;
+            }
+            set
+            {
+                entree = value;
+                entree.PropertyChanged += OnPropertyChanged;
+                NotifyOfPropertyChange("Special");
+                NotifyOfPropertyChange("Price");
+            }
+        }
         /// <summary>
         /// Get and set for Drink in the combo
         /// </summary>
-        public Drink Drink { get; set; }
+        private Drink drink;
+        public Drink Drink
+        {
+            get
+            {
+                return drink;
+            }
+            set
+            {
+                drink = value;
+                drink.PropertyChanged += OnPropertyChanged;
+                NotifyOfPropertyChange("Special");
+                NotifyOfPropertyChange("Price");
+            }
+        }
         /// <summary>
         /// Get and set for Side in the combo
         /// </summary>
-        public Side Side { get; set; }
+        private Side side;
+        public Side Side {
+            get
+            {
+                return side;
+            }
+            set
+            {
+                side = value;
+                side.PropertyChanged += OnPropertyChanged;
+                NotifyOfPropertyChange("Special");
+                NotifyOfPropertyChange("Price");
+            }
+        }
 
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
+        {
+            Notify();
+        }
+
+        private void Notify()
+        {
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Price");
+        }
         /// <summary>
         /// Constructor with default side and drink
         /// </summary>

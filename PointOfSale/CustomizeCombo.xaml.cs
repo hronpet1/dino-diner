@@ -125,7 +125,7 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void SelectSide(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SideSelection(Combo.Side));
+            NavigationService.Navigate(new SideSelection(Combo));
         }
         /// <summary>
         /// Opens new DrinkSelection windows
@@ -134,7 +134,37 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void SelectDrink(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DrinkSelection(Combo.Drink));
+            NavigationService.Navigate(new DrinkSelection(Combo));
+        }
+        /// <summary>
+        /// Change size of side and drink to small
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SmallButton(object sender, RoutedEventArgs e)
+        {
+            Combo.Side.Size = DinoDiner.Menu.Size.Small;
+            Combo.Drink.Size = DinoDiner.Menu.Size.Small;
+        }
+        /// <summary>
+        /// Change size of side and drink to medium
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MediumButton(object sender, RoutedEventArgs e)
+        {
+            Combo.Side.Size = DinoDiner.Menu.Size.Medium;
+            Combo.Drink.Size = DinoDiner.Menu.Size.Medium;
+        }
+        /// <summary>
+        /// Change size of side and drink to large
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LargeButton(object sender, RoutedEventArgs e)
+        {
+            Combo.Side.Size = DinoDiner.Menu.Size.Large;
+            Combo.Drink.Size = DinoDiner.Menu.Size.Large;
         }
     }
 }
