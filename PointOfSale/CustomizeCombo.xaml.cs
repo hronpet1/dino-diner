@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -20,73 +21,65 @@ namespace PointOfSale
     /// </summary>
     public partial class CustomizeCombo : Page
     {
+        private CretaceousCombo Combo { get; set; }
         /// <summary>
         /// Changes entree button based on chosen entree
         /// </summary>
         /// <param name="entree">Name of chosen entree</param>
-        public CustomizeCombo(string entree)
+        public CustomizeCombo(CretaceousCombo combo)
         {
             InitializeComponent();
-            switch (entree)
+            Combo = combo;
+            if (Combo.Entree is Brontowurst)
             {
-                case "brontowurst":
-                {
-                        entreeName.Text = "Brontowurst";
-                        Uri imageUri = new Uri("pack://application:,,,/images/wurst.png");
-                        BitmapImage imageBitmap = new BitmapImage(imageUri);
-                        entreeImage.Source = imageBitmap;
-                        break;
-                }
-
-                case "nuggets":
-                    {
-                        entreeName.Text = "Dino-nuggets";
-                        Uri imageUri = new Uri("pack://application:,,,/images/nuggets.png");
-                        BitmapImage imageBitmap = new BitmapImage(imageUri);
-                        entreeImage.Source = imageBitmap;
-                        break;
-                    }
-                case "pbj":
-                    {
-                        entreeName.Text = "Prehistoric PB&amp;J";
-                        Uri imageUri = new Uri("pack://application:,,,/images/pbj.png");
-                        BitmapImage imageBitmap = new BitmapImage(imageUri);
-                        entreeImage.Source = imageBitmap;
-                        break;
-                    }
-                case "steakosaurus":
-                    {
-                        entreeName.Text = "Steakosaurus";
-                        Uri imageUri = new Uri("pack://application:,,,/images/steakosaurus.png");
-                        BitmapImage imageBitmap = new BitmapImage(imageUri);
-                        entreeImage.Source = imageBitmap;
-                        break;
-                    }
-                case "trex":
-                    {
-                        entreeName.Text = "T-Rex King Burger";
-                        Uri imageUri = new Uri("pack://application:,,,/images/trex.png");
-                        BitmapImage imageBitmap = new BitmapImage(imageUri);
-                        entreeImage.Source = imageBitmap;
-                        break;
-                    }
-                case "wings":
-                    {
-                        entreeName.Text = "Pterodacyl Wings Combo";
-                        Uri imageUri = new Uri("pack://application:,,,/images/wings.png");
-                        BitmapImage imageBitmap = new BitmapImage(imageUri);
-                        entreeImage.Source = imageBitmap;
-                        break;
-                    }
-                case "wrap":
-                    {
-                        entreeName.Text = "Veloci-wrap";
-                        Uri imageUri = new Uri("pack://application:,,,/images/wrap.png");
-                        BitmapImage imageBitmap = new BitmapImage(imageUri);
-                        entreeImage.Source = imageBitmap;
-                        break;
-                    }
+                entreeName.Text = "Brontowurst";
+                Uri imageUri = new Uri("pack://application:,,,/images/wurst.png");
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                entreeImage.Source = imageBitmap;
             }
+            else if (Combo.Entree is PrehistoricPBJ)
+            {
+                entreeName.Text = "Prehistoric PB&amp;J";
+                Uri imageUri = new Uri("pack://application:,,,/images/pbj.png");
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                entreeImage.Source = imageBitmap;
+            }
+            else if (Combo.Entree is VelociWrap)
+            {
+                entreeName.Text = "Veloci-wrap";
+                Uri imageUri = new Uri("pack://application:,,,/images/wrap.png");
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                entreeImage.Source = imageBitmap;
+            }
+            else if (Combo.Entree is DinoNuggets)
+            {
+                entreeName.Text = "Dino-nuggets";
+                Uri imageUri = new Uri("pack://application:,,,/images/nuggets.png");
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                entreeImage.Source = imageBitmap;
+            }
+            else if (Combo.Entree is SteakosaurusBurger)
+            {
+                entreeName.Text = "Steakosaurus";
+                Uri imageUri = new Uri("pack://application:,,,/images/steakosaurus.png");
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                entreeImage.Source = imageBitmap;
+            }
+            else if (Combo.Entree is TRexKingBurger)
+            {
+                entreeName.Text = "T-Rex King Burger";
+                Uri imageUri = new Uri("pack://application:,,,/images/trex.png");
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                entreeImage.Source = imageBitmap;
+            }
+            else if (Combo.Entree is PterodactylWings)
+            {
+                entreeName.Text = "Pterodacyl Wings Combo";
+                Uri imageUri = new Uri("pack://application:,,,/images/wings.png");
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                entreeImage.Source = imageBitmap;
+            }
+            
         }
         /// <summary>
         /// Opens new EntreeSelection window
@@ -95,7 +88,35 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void SelectEntree(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EntreeSelection());
+
+            if (Combo.Entree is Brontowurst)
+            {
+                NavigationService.Navigate(new CustomizeBrontowurst((Brontowurst)Combo.Entree));
+            }
+            else if (Combo.Entree is PrehistoricPBJ)
+            {
+                NavigationService.Navigate(new CustomizePBJ((PrehistoricPBJ)Combo.Entree));
+            }
+            else if (Combo.Entree is VelociWrap)
+            {
+                NavigationService.Navigate(new CustomizeWrap((VelociWrap)Combo.Entree));
+            }
+            else if (Combo.Entree is DinoNuggets)
+            {
+                NavigationService.Navigate(new CustomizeNuggets((DinoNuggets)Combo.Entree));
+            }
+            else if (Combo.Entree is SteakosaurusBurger)
+            {
+                NavigationService.Navigate(new CustomizeSteakosaurus((SteakosaurusBurger)Combo.Entree));
+            }
+            else if (Combo.Entree is TRexKingBurger)
+            {
+                NavigationService.Navigate(new CustomizeTRex((TRexKingBurger)Combo.Entree));
+            }
+            else
+            {
+                return;
+            }
         }
         /// <summary>
         /// Opens new SideSelection window
@@ -104,7 +125,7 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void SelectSide(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SideSelection());
+            NavigationService.Navigate(new SideSelection(Combo.Side));
         }
         /// <summary>
         /// Opens new DrinkSelection windows
@@ -113,7 +134,7 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void SelectDrink(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DrinkSelection());
+            NavigationService.Navigate(new DrinkSelection(Combo.Drink));
         }
     }
 }

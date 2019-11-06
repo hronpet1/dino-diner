@@ -48,7 +48,34 @@ namespace PointOfSale
             }
             if (OrderItems.SelectedItem is Entree entree)
             {
-                NavigationService?.Navigate(new EntreeSelection(entree));
+                if (entree is Brontowurst)
+                {
+                    NavigationService.Navigate(new CustomizeBrontowurst((Brontowurst)entree));
+                }
+                else if (entree is PrehistoricPBJ)
+                {
+                    NavigationService.Navigate(new CustomizePBJ((PrehistoricPBJ)entree));
+                }
+                else if (entree is VelociWrap)
+                {
+                    NavigationService.Navigate(new CustomizeWrap((VelociWrap)entree));
+                }
+                else if (entree is DinoNuggets)
+                {
+                    NavigationService.Navigate(new CustomizeNuggets((DinoNuggets)entree));
+                }
+                else if (entree is SteakosaurusBurger)
+                {
+                    NavigationService.Navigate(new CustomizeSteakosaurus((SteakosaurusBurger)entree));
+                }
+                else if (entree is TRexKingBurger)
+                {
+                    NavigationService.Navigate(new CustomizeTRex((TRexKingBurger)entree));
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 

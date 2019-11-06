@@ -58,8 +58,26 @@
     <Compile Include="CustomizeCombo.xaml.cs">
       <DependentUpon>CustomizeCombo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomizePrehistoricPBJ.xaml.cs">
-      <DependentUpon>CustomizePrehistoricPBJ.xaml</DependentUpon>
+    <Compile Include="CustomizeBrontowurst.xaml.cs">
+      <DependentUpon>CustomizeBrontowurst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeNuggets.xaml.cs">
+      <DependentUpon>CustomizeNuggets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizePBJ.xaml.cs">
+      <DependentUpon>CustomizePBJ.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeSteakosaurus.xaml.cs">
+      <DependentUpon>CustomizeSteakosaurus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeTRex.xaml.cs">
+      <DependentUpon>CustomizeTRex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeWings.xaml.cs">
+      <DependentUpon>CustomizeWings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeWrap.xaml.cs">
+      <DependentUpon>CustomizeWrap.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntreeSelection.xaml.cs">
       <DependentUpon>EntreeSelection.xaml</DependentUpon>
@@ -78,7 +96,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomizePrehistoricPBJ.xaml">
+    <Page Include="CustomizeBrontowurst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomizeNuggets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomizePBJ.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomizeSteakosaurus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomizeTRex.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomizeWings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomizeWrap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,6 +248,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cross.png" />
+    <Resource Include="images\tick.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,7 +24,8 @@ namespace PointOfSale
         /// <summary>
         /// Currently edited Drink
         /// </summary>
-        Drink Drink { get; set; }
+        Drink Drink { get; set; } = null;
+        CretaceousCombo Combo { get; set; } = null;
         public DrinkSelection()
         {
             InitializeComponent();
@@ -37,12 +38,18 @@ namespace PointOfSale
         {
             InitializeComponent();
             Drink = drink;
-            SetButtons();
+            SetButtons(Drink);
         }
 
-        private void SetButtons()
+        public DrinkSelection(CretaceousCombo combo)
         {
-            if (Drink is Sodasaurus)
+            InitializeComponent();
+            Combo = combo;
+            SetButtons(Combo.Drink);
+        }
+        private void SetButtons(Drink drink)
+        {
+            if (drink is Sodasaurus)
             {
                 lemon.Visibility = Visibility.Collapsed;
                 sugar.Visibility = Visibility.Collapsed;
@@ -51,7 +58,7 @@ namespace PointOfSale
                 flavor.Visibility = Visibility.Visible;
                 holdIceText.Text = "Hold \nIce";
             }
-            else if (Drink is Tyrannotea)
+            else if (drink is Tyrannotea)
             {
                 lemon.Visibility = Visibility.Visible;
                 sugar.Visibility = Visibility.Visible;
@@ -60,7 +67,7 @@ namespace PointOfSale
                 flavor.Visibility = Visibility.Collapsed;
                 holdIceText.Text = "Hold \nIce";
             }
-            else if (Drink is Water)
+            else if (drink is Water)
             {
                 lemon.Visibility = Visibility.Visible;
                 sugar.Visibility = Visibility.Collapsed;
@@ -69,7 +76,7 @@ namespace PointOfSale
                 flavor.Visibility = Visibility.Collapsed;
                 holdIceText.Text = "Hold \nIce";
             }
-            else if (Drink is JurassicJava)
+            else if (drink is JurassicJava)
             {
                 lemon.Visibility = Visibility.Collapsed;
                 sugar.Visibility = Visibility.Collapsed;
@@ -83,14 +90,20 @@ namespace PointOfSale
         /// Adds new Drink to the Order
         /// </summary>
         /// <param name="drink">Drink to be added</param>
-        private void SelectDrink(Drink drink)
+        private void SelectSoloDrink(Drink drink)
         {
             if (DataContext is Order order)
             {
                 order.Add(drink);
                 this.Drink = drink;
-                SetButtons();
+                SetButtons(Drink);
             }
+        }
+
+        private void SelectComboDrink(Drink drink)
+        {
+            Combo.Drink = drink;
+            SetButtons(drink);
         }
         /// <summary>
         /// Opens new FlavorSelection window
@@ -108,7 +121,14 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void SodasaurusClick(object sender, RoutedEventArgs e)
         {
-            SelectDrink(new Sodasaurus());
+            if(Combo != null)
+            {
+                SelectComboDrink(new Sodasaurus());
+            }
+            else
+            {
+                SelectSoloDrink(new Sodasaurus());
+            }
         }
         /// <summary>
         /// Shows AddLemon button and hides others, adds new Water
@@ -117,7 +137,14 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void WaterClick(object sender, RoutedEventArgs e)
         {
-            SelectDrink(new Water());
+            if (Combo != null)
+            {
+                SelectComboDrink(new Water());
+            }
+            else
+            {
+                SelectSoloDrink(new Water());
+            }
         }
         /// <summary>
         /// Shows AddSugar button and hides others, adds new Tyrannotea
@@ -126,7 +153,14 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void TyrannoteaClick(object sender, RoutedEventArgs e)
         {
-            SelectDrink(new Tyrannotea());
+            if (Combo != null)
+            {
+                SelectComboDrink(new Tyrannotea());
+            }
+            else
+            {
+                SelectSoloDrink(new Tyrannotea());
+            }
         }
         /// <summary>
         /// Shows Decaf and AddCream buttons and hides others, adds new JurrasicJava
@@ -135,7 +169,14 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void JurassicJavaClick(object sender, RoutedEventArgs e)
         {
-            SelectDrink(new JurassicJava());
+            if (Combo != null)
+            {
+                SelectComboDrink(new JurassicJava());
+            }
+            else
+            {
+                SelectSoloDrink(new JurassicJava());
+            }
         }
 
         /// <summary>
@@ -172,9 +213,10 @@ namespace PointOfSale
         /// <param name="size">New size of the selected Drink</param>
         private void SetSize(DinoDiner.Menu.Size size)
         {
-            if (Drink != null)
+            if (Combo != null)
+                Combo.Drink.Size = size;
+            else if (Drink != null)
                 Drink.Size = size;
-            NavigationService.Navigate(new MenuCategorySelection());
         }
         /// <summary>
         /// Calls AddLemon function for selected Water or Tyrannotea 

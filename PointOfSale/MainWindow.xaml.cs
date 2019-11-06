@@ -45,5 +45,13 @@ namespace PointOfSale
                 element.DataContext = OrderUI.DataContext;
             }
         }
+
+        public void goBack(object sender, RoutedEventArgs args)
+        {
+            if (OrderUI.NavigationService.CanGoBack)
+            {
+                OrderUI.NavigationService.GoBack();
+            }
+        }
     }
 }

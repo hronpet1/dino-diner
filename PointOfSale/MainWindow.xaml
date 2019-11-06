@@ -12,6 +12,7 @@
     </Window.DataContext>
     <DockPanel>
         <local:OrderControl x:Name="OrderList" DockPanel.Dock="Right" Width="200" Background="LightSteelBlue"/>
+        <Button DockPanel.Dock="Bottom" Height="30" Click="goBack"> Go Back </Button>
         <Frame Name="OrderUI" LoadCompleted="OnLoadComplete" DataContextChanged="OnDataContextChanged" Source="MenuCategorySelection.xaml"></Frame>
     </DockPanel>
 </Window>

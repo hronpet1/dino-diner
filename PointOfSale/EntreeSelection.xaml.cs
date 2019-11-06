@@ -60,6 +60,7 @@ namespace PointOfSale
         private void AddWurst(object sender, RoutedEventArgs e)
         {
             SelectEntree(new Brontowurst());
+            NavigationService.Navigate(new CustomizeBrontowurst((Brontowurst)Entree));
         }
         /// <summary>
         /// Adds new PrehistoricPBJ to the Order
@@ -69,7 +70,7 @@ namespace PointOfSale
         private void AddPBJ(object sender, RoutedEventArgs e)
         {
             SelectEntree(new PrehistoricPBJ());
-            NavigationService.Navigate(new CustomizePrehistoricPBJ((PrehistoricPBJ)Entree));
+            NavigationService.Navigate(new CustomizePBJ((PrehistoricPBJ)Entree));
         }
         /// <summary>
         /// Adds new VelociWrap to the Order
@@ -79,6 +80,7 @@ namespace PointOfSale
         private void AddWrap(object sender, RoutedEventArgs e)
         {
             SelectEntree(new VelociWrap());
+            NavigationService.Navigate(new CustomizeWrap((VelociWrap)Entree));
         }
         /// <summary>
         /// Adds new DinoNuggets to the Order
@@ -88,6 +90,7 @@ namespace PointOfSale
         private void AddNuggets(object sender, RoutedEventArgs e)
         {
             SelectEntree(new DinoNuggets());
+            NavigationService.Navigate(new CustomizeNuggets((DinoNuggets)Entree));
         }
         /// <summary>
         /// Adds new PterodactylWings to the Order
@@ -106,6 +109,7 @@ namespace PointOfSale
         private void AddSteakosaurus(object sender, RoutedEventArgs e)
         {
             SelectEntree(new SteakosaurusBurger());
+            NavigationService.Navigate(new CustomizeSteakosaurus((SteakosaurusBurger)Entree));
         }
         /// <summary>
         /// Adds new TRexKingBurger to the Order
@@ -115,6 +119,7 @@ namespace PointOfSale
         private void AddTrex(object sender, RoutedEventArgs e)
         {
             SelectEntree(new TRexKingBurger());
+            NavigationService.Navigate(new CustomizeTRex((TRexKingBurger)Entree));
         }
     }
 }
