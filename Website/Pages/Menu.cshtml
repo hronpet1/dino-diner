@@ -1,0 +1,100 @@
+﻿@page
+@model Website.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h1>Menu</h1>
+
+<div class="menu">
+    <div class="type">
+        <h2>Entrees</h2>
+        <div class="menu-item">
+            @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.AvailableEntrees())
+            {
+            <div class="description">
+                <h4>@item.ToString()</h4>
+                <h4> - $</h4>
+                <h4>@item.Price</h4>
+                <h4> - Calories - </h4>
+                <h4>@item.Calories</h4>
+            </div>
+                <ul class="ingredients">
+                    @foreach (string ingred in item.Ingredients)
+                    {
+                    <li class="single-ingredient">
+                        @ingred
+                    </li>
+                    }
+                </ul>
+            }
+        </div>
+
+        <h2>Sides</h2>
+        <div class="menu-item">
+            @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.AvailableSides())
+            {
+            <div class="description">
+                <h4>@item.ToString()</h4>
+                <h4> - $</h4>
+                <h4>@item.Price</h4>
+                <h4> - Calories - </h4>
+                <h4>@item.Calories</h4>
+            </div>
+                <ul class="ingredients">
+                    @foreach (string ingred in item.Ingredients)
+                    {
+                        <li class="single-ingredient">
+                            @ingred
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+
+        <h2>Drinks</h2>
+        <div class="menu-item">
+            @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.AvailableDrinks())
+            {
+            <div class="description">
+                <h4>@item.ToString()</h4>
+                <h4> - $</h4>
+                <h4>@item.Price</h4>
+                <h4> - Calories - </h4>
+                <h4>@item.Calories</h4>
+            </div>
+                <ul class="ingredients">
+                    @foreach (string ingred in item.Ingredients)
+                    {
+                        <li class="single-ingredient">
+                            @ingred
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+
+        <h2>Combos</h2>
+        <div class="menu-item">
+            @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.AvailableCombos())
+            {
+            <div class="description">
+                <h4>@item.ToString()</h4>
+                <h4> - $</h4>
+                <h4>@item.Price</h4>
+                <h4> - Calories - </h4>
+                <h4>@item.Calories</h4>
+            </div>
+                <ul class="ingredients">
+                    @foreach (string ingred in item.Ingredients)
+                    {
+                        <li class="single-ingredient">
+                            @ingred
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+</div>
+
