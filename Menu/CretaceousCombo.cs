@@ -150,11 +150,10 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> comboIngredients = new List<string>();
-                comboIngredients.Concat(Side.Ingredients);
-                comboIngredients.Concat(Entree.Ingredients);
-                comboIngredients.Concat(Drink.Ingredients);
+                comboIngredients.AddRange(Side.Ingredients);
+                comboIngredients.AddRange(Entree.Ingredients);
+                comboIngredients.AddRange(Drink.Ingredients);
                 return comboIngredients;
-
             }
         }
         /// <summary>

@@ -4,97 +4,151 @@
     ViewData["Title"] = "Menu";
 }
 
-<h1>Menu</h1>
-
-<div class="menu">
-    <div class="type">
-        <h2>Entrees</h2>
-        <div class="menu-item">
-            @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.AvailableEntrees())
-            {
-            <div class="description">
-                <h4>@item.ToString()</h4>
-                <h4> - $</h4>
-                <h4>@item.Price</h4>
-                <h4> - Calories - </h4>
-                <h4>@item.Calories</h4>
-            </div>
-                <ul class="ingredients">
-                    @foreach (string ingred in item.Ingredients)
+<div style="display:flex;">
+            <div class="menu">
+                <h1>Menu</h1>
+                <div class="type">
+                    @if (Model.Menu.CurEntrees != null && Model.Menu.CurEntrees.GetEnumerator().MoveNext())
                     {
-                    <li class="single-ingredient">
-                        @ingred
-                    </li>
+                        <h2>Entrees</h2>
                     }
-                </ul>
-            }
-        </div>
-
-        <h2>Sides</h2>
-        <div class="menu-item">
-            @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.AvailableSides())
-            {
-            <div class="description">
-                <h4>@item.ToString()</h4>
-                <h4> - $</h4>
-                <h4>@item.Price</h4>
-                <h4> - Calories - </h4>
-                <h4>@item.Calories</h4>
-            </div>
-                <ul class="ingredients">
-                    @foreach (string ingred in item.Ingredients)
+                    <div class="menu-item">
+                        @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.CurEntrees)
+                        {
+                            <div class="description">
+                                <h4>@item.ToString()</h4>
+                                <h4> - $</h4>
+                                <h4>@item.Price</h4>
+                                <h4> - Calories - </h4>
+                                <h4>@item.Calories</h4>
+                            </div>
+                            <ul class="ingredients">
+                                @foreach (string ingred in item.Ingredients)
+                                {
+                                    <li class="single-ingredient">
+                                        @ingred
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                    @if (Model.Menu.CurSides != null && Model.Menu.CurSides.GetEnumerator().MoveNext())
                     {
-                        <li class="single-ingredient">
-                            @ingred
-                        </li>
+                        <h2>Sides</h2>
                     }
-                </ul>
-            }
-        </div>
-
-        <h2>Drinks</h2>
-        <div class="menu-item">
-            @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.AvailableDrinks())
-            {
-            <div class="description">
-                <h4>@item.ToString()</h4>
-                <h4> - $</h4>
-                <h4>@item.Price</h4>
-                <h4> - Calories - </h4>
-                <h4>@item.Calories</h4>
-            </div>
-                <ul class="ingredients">
-                    @foreach (string ingred in item.Ingredients)
+                    <div class="menu-item">
+                        @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.CurSides)
+                        {
+                            <div class="description">
+                                <h4>@item.ToString()</h4>
+                                <h4> - $</h4>
+                                <h4>@item.Price</h4>
+                                <h4> - Calories - </h4>
+                                <h4>@item.Calories</h4>
+                            </div>
+                            <ul class="ingredients">
+                                @foreach (string ingred in item.Ingredients)
+                                {
+                                    <li class="single-ingredient">
+                                        @ingred
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                    @if (Model.Menu.CurDrinks != null && Model.Menu.CurDrinks.GetEnumerator().MoveNext())
                     {
-                        <li class="single-ingredient">
-                            @ingred
-                        </li>
+                        <h2>Drinks</h2>
                     }
-                </ul>
-            }
-        </div>
-
-        <h2>Combos</h2>
-        <div class="menu-item">
-            @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.AvailableCombos())
-            {
-            <div class="description">
-                <h4>@item.ToString()</h4>
-                <h4> - $</h4>
-                <h4>@item.Price</h4>
-                <h4> - Calories - </h4>
-                <h4>@item.Calories</h4>
-            </div>
-                <ul class="ingredients">
-                    @foreach (string ingred in item.Ingredients)
+                    <div class="menu-item">
+                        @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.CurDrinks)
+                        {
+                            <div class="description">
+                                <h4>@item.ToString()</h4>
+                                <h4> - $</h4>
+                                <h4>@item.Price</h4>
+                                <h4> - Calories - </h4>
+                                <h4>@item.Calories</h4>
+                            </div>
+                            <ul class="ingredients">
+                                @foreach (string ingred in item.Ingredients)
+                                {
+                                    <li class="single-ingredient">
+                                        @ingred
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                    @if (Model.Menu.CurCombos != null && Model.Menu.CurCombos.GetEnumerator().MoveNext())
                     {
-                        <li class="single-ingredient">
-                            @ingred
-                        </li>
+                        <h2>Combos</h2>
                     }
-                </ul>
-            }
-        </div>
+                    <div class="menu-item">
+                        @foreach (DinoDiner.Menu.IMenuItem item in Model.Menu.CurCombos)
+                        {
+                            <div class="description">
+                                <h4>@item.ToString()</h4>
+                                <h4> - $</h4>
+                                <h4>@item.Price</h4>
+                                <h4> - Calories - </h4>
+                                <h4>@item.Calories</h4>
+                            </div>
+                            <ul class="ingredients">
+                                @foreach (string ingred in item.Ingredients)
+                                {
+                                    <li class="single-ingredient">
+                                        @ingred
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+            <form class="searchform" method="post">
+                <input type="text" name="search" id="search" style="width:30%;" />
+                <input type="submit" name="searchandfilter" id="searchandfilter" value="Search and Filter" style="width:30%;" />
+
+                <h3>Menu category</h3>
+
+                <label>
+                    <input class="menu-category" type="checkbox" name="menuCategory" value="entree" checked="@Model.menuCategory.Contains("Entree")" />
+                    Entree
+                </label>
+                <label>
+                    <input class="menu-category" type="checkbox" name="menuCategory" value="side" checked="@Model.menuCategory.Contains("Side")" />
+                    Side
+                </label>
+                <label>
+                    <input class="menu-category" type="checkbox" name="menuCategory" value="drink" checked="@Model.menuCategory.Contains("Drink")" />
+                    Drink
+                </label>
+                <label>
+                    <input class="menu-category" type="checkbox" name="menuCategory" value="combo" checked="@Model.menuCategory.Contains("Combo")" />
+                    Combo
+                </label>
+
+                <h4>Price</h4>
+                <label>
+                    Min:
+                    <input type="number" min="0" max="10" step="0.1" name="minPrice" value="@Model.minPrice" />
+                </label>
+                <label>
+                    Max:
+                    <input type="number" min="0" max="10" step="0.1" name="maxPrice" value="@Model.maxPrice" />
+                </label>
+
+                <h3>Excluding ingredients</h3>
+                @foreach (string ingredient in @Model.Menu.PossibleIngredients)
+                {
+                    <label>
+                        <input class="exclude-ingredient" type="checkbox" value="@ingredient" name="excludedIngredients" checked="@Model.excludedIngredients.Contains("hey")" />
+                        @ingredient
+                    </label>
+                }
+
+            </form>
     </div>
-</div>
-

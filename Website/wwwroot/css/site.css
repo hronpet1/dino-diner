@@ -5,6 +5,19 @@ body {
     padding-bottom: 20px;
 }
 
+.menu {
+    flex: 3; 
+    padding: 1em;
+    border: solid;
+}
+
+.searchform {
+    flex: 2;
+    padding: 1em;
+    border: solid;
+    display: flex;
+    flex-direction: column;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -32,7 +45,11 @@ body {
     
 }
 
-.description{
+.description {
     display: flex;
     flex-direction: row;
+}
+
+form {
+    background-color: lightgray;
 }

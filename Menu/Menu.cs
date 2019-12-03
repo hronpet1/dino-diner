@@ -10,6 +10,19 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Menu
     {
+        public IEnumerable<Entree> CurEntrees { get; set; } = new List<Entree>();
+        public IEnumerable<Drink> CurDrinks { get; set; } = new List<Drink>();
+        public IEnumerable<Side> CurSides { get; set; } = new List<Side>();
+        public IEnumerable<CretaceousCombo> CurCombos { get; set; } = new List<CretaceousCombo>();
+
+        public Menu()
+        {
+            CurEntrees = AvailableEntrees().Cast<Entree>().ToList();
+            CurDrinks = AvailableDrinks().Cast<Drink>().ToList();
+            CurSides = AvailableSides().Cast<Side>().ToList();
+            CurCombos = AvailableCombos().Cast<CretaceousCombo>().ToList();
+
+        }
         /// <summary>
         /// List of all available menu items
         /// </summary>
@@ -87,6 +100,16 @@ namespace DinoDiner.Menu
             return combos;
         }
 
+        public HashSet<string> PossibleIngredients { 
+            get
+            {
+                HashSet<string> posIng = new HashSet<string>();
+                foreach (IMenuItem item in AvailableMenuItems())
+                    foreach (string ing in item.Ingredients)
+                        posIng.Add(ing);
+                return posIng;
+            }
+        }
         /// <summary>
         /// ToString override
         /// </summary>

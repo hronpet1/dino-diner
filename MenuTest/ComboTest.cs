@@ -41,5 +41,12 @@ namespace MenuTest
             string[] str = list.ToArray();
             Assert.Equal(str, combo.Special);
         }
+
+        [Fact]
+        public void ComboShouldHaveIngredients()
+        {
+            CretaceousCombo combo = new CretaceousCombo(new Brontowurst());
+            Assert.NotEmpty(combo.Ingredients);
+        }
     }
 }
